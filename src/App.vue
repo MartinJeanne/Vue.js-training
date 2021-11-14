@@ -1,16 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>{{ title }}</h1>
+  <Modal />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Modal from './components/Modal.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: { Modal },
+  data() {
+    return {
+      title: 'My first Vue app !',
+    }
+  },
+  methods: {
+    handleClick() {
+      console.log(this.$refs.test)
+      let h1 = this.$refs.test
+      h1.style.color = 'red'
+      h1.focus()
+    },
+  },
 }
 </script>
 
