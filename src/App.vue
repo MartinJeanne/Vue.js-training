@@ -1,6 +1,15 @@
 <template>
   <h1>{{ title }}</h1>
-  <Modal />
+  <p>Welcome !</p>
+  <Modal v-if="showModal" theme="sale" @close="toggleModal">
+    <template v-slot:links>
+      <a href="#">Sign up</a>
+      <a href="#">Register</a>
+    </template>
+    <h1>My first Vue app !</h1>
+    <p>I'm training right here :)</p>
+  </Modal>
+  <button @click="toggleModal">Open modal</button>
 </template>
 
 <script>
@@ -12,6 +21,7 @@ export default {
   data() {
     return {
       title: 'My first Vue app !',
+      showModal: false
     }
   },
   methods: {
@@ -21,7 +31,10 @@ export default {
       h1.style.color = 'red'
       h1.focus()
     },
-  },
+    toggleModal() {
+      this.showModal = !this.showModal
+    }
+  }
 }
 </script>
 
@@ -30,8 +43,13 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  text-align: center;
   margin-top: 60px;
+}
+h1 {
+  border-bottom: 1px solid rgb(194, 194, 194);
+  display: inline-block;
+  padding-bottom: 10px;
 }
 </style>
