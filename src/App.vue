@@ -1,6 +1,7 @@
 <template>
   <h1>{{ title }}</h1>
   <p>Welcome !</p>
+
   <Modal v-if="showModal" theme="sale" @close="toggleModal">
     <template v-slot:links>
       <a href="#">Sign up</a>
@@ -9,7 +10,14 @@
     <h1>My first Vue app !</h1>
     <p>I'm training right here :)</p>
   </Modal>
+
+  <Modal v-if="showModalTwo" @close="toggleModalTwo">
+    <h1>Hi, i'm the second modal !</h1>
+    <p>I'm not as cool at the first, but np</p>
+  </Modal>
+
   <button @click="toggleModal">Open modal</button>
+  <button @click="toggleModalTwo">Open modal two</button>
 </template>
 
 <script>
@@ -21,7 +29,8 @@ export default {
   data() {
     return {
       title: 'My first Vue app !',
-      showModal: false
+      showModal: false,
+      showModalTwo: false
     }
   },
   methods: {
@@ -33,6 +42,9 @@ export default {
     },
     toggleModal() {
       this.showModal = !this.showModal
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo
     }
   }
 }
