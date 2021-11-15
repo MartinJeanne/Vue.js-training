@@ -2,19 +2,23 @@
   <h1>{{ title }}</h1>
   <p>Welcome !</p>
 
-  <Modal v-if="showModal" theme="sale" @close="toggleModal">
-    <template v-slot:links>
-      <a href="#">Sign up</a>
-      <a href="#">Register</a>
-    </template>
-    <h1>My first Vue app !</h1>
-    <p>I'm training right here :)</p>
-  </Modal>
+  <teleport to=".modals" v-if="showModal">
+    <Modal theme="sale" @close="toggleModal">
+      <template v-slot:links>
+        <a href="#">Sign up</a>
+        <a href="#">Register</a>
+      </template>
+      <h1>My first Vue app !</h1>
+      <p>I'm training right here :)</p>
+    </Modal>
+  </teleport>
 
-  <Modal v-if="showModalTwo" @close="toggleModalTwo">
-    <h1>Hi, i'm the second modal !</h1>
-    <p>I'm not as cool at the first, but np</p>
-  </Modal>
+  <teleport to=".modals" v-if="showModalTwo">
+    <Modal @close="toggleModalTwo">
+      <h1>Hi, i'm the second modal !</h1>
+      <p>I'm not as cool at the first, but np</p>
+    </Modal>
+  </teleport>
 
   <button @click="toggleModal">Open modal</button>
   <button @click="toggleModalTwo">Open modal two</button>
@@ -51,7 +55,7 @@ export default {
 </script>
 
 <style>
-#app {
+#app, .modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
